@@ -38,18 +38,23 @@ x = hs.BinEdges;
 h = hs.Values;
 
 
-total = 0;
+entropy = 0;
 l = length(y);
 for i = 1 : length(h)
     p = h(i) / l;
     if p == 0
         continue
     end
-    disp(p)
-    total = total - p*log2(p);
+    entropy = entropy - p*log2(p);
 end
 
-I = entropy(h);
+
+% entropy
+disp('entropy = ')
+disp(entropy)
+
+
+code = huffmanenco(x, h/l);
 
 
 
