@@ -35,6 +35,7 @@ hs = histogram(y, 'FaceColor', 'red');
 grid on;
 
 x = hs.BinEdges;
+x(end)=[];
 h = hs.Values;
 
 
@@ -53,8 +54,9 @@ end
 disp('entropy = ')
 disp(entropy)
 
+dict = dictionary(x, h/l);
 
-code = huffmanenco(x, h/l);
-
-
-
+% huffmane code
+code = huffmanenco(dict,y);
+disp('huffmane code = ')
+disp(code);
